@@ -56,16 +56,29 @@ function cria_baloes(qtde_baloes){
 		var balao = document.createElement("img");
 		balao.src = 'imagens/balao_azul_pequeno.png';
 		balao.style.margin = '10px';
-		balao.id = 'b'+ i
-		balao.onclick=function(){ estourar(this); }
+		balao.id = 'b'+ i //definir id para cada balao
+		balao.onclick=function(){ estourar(this); }//passar o balao para uma funcao
 
 		document.getElementById('cenario').appendChild(balao);
 	}
 }
 
 function estourar(e){
+	var id_balao = e.id; //pegar de um balao para alterar depois
+	document.getElementById(id_balao).src = 'imagens/balao_azul_pequeno_estourado.png' //alterar o balao clicado
+    pontuacao(-1)
+}
 
-	var id_balao = e.id;
-	document.getElementById(id_balao).src = 'imagens/balao_azul_pequeno_estourado.png'
+function pontuacao(acao){
+	var baloes_inteiros = document.getElementById('baloes_inteiros').innerHTML;
+	var baloes_estourados = document.getElementById('baloes_estourados').innerHTML;
 
+    baloes_inteiros = parseInt(baloes_inteiros)
+    baloes_estourados = parseInt(baloes_estourados)
+
+    baloes_inteiros = baloes_inteiros + acao;// baloes inteiros 20 - 1 = 19 (regra de sinal + - = -)
+    baloes_estourados = baloes_estourados - acao;// baloes estourados 0 + 1 = 19 (regra de sinal - - = +)
+
+    document.getElementById('baloes_inteiros').innerHTML = baloes_inteiros;
+    document.getElementById('baloes_estourados').innerHTML = baloes_estourados;
 }
