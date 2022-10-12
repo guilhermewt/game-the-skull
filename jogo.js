@@ -81,4 +81,18 @@ function pontuacao(acao){
 
     document.getElementById('baloes_inteiros').innerHTML = baloes_inteiros;
     document.getElementById('baloes_estourados').innerHTML = baloes_estourados;
+   
+    situacao_jogo(baloes_inteiros);
+
+}
+
+function situacao_jogo(baloes_inteiros){
+	if(baloes_inteiros == 0){
+		alert('Parabéns, voce conseguiu estourar todos os baloes a tempo');
+		parar_jogo();
+	}
+}
+
+function parar_jogo(){
+	clearTimeout(timerId);
 }
