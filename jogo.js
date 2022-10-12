@@ -1,3 +1,5 @@
+var timerId = null // variavel que armazena a chamada da funcao timeout
+
 function iniciarJogo(){
 	// pegar o que veio na url ex. ?1
 	var url = window.location.search;
@@ -27,6 +29,26 @@ function iniciarJogo(){
 	//imprimir qtde baloes inteiros
 	document.getElementById('baloes_inteiros').innerHTML = qtde_baloes;
 	document.getElementById('baloes_estourados').innerHTML = 0;
+
+	contagem_tempo(tempo_segundos + 1);
+}
+
+function contagem_tempo(segundos){
+
+	segundos = segundos - 1;
+	if(segundos == -1){
+		clearTimeout(timerId) //para a execucao do settimeout
+		gameOver();
+		return false
+	}
+
+	document.getElementById('cronometro').innerHTML = segundos;
+
+	timerId =  setTimeout("contagem_tempo("+segundos+")",1000) //executar a funcao a cadas milisegundo
+}
+
+function gameOver(){
+	alert('fim de jogo voce nao conseguiu estourar todos os baloes a tempo')
 }
 
 function cria_baloes(qtde_baloes){
