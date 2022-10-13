@@ -23,7 +23,7 @@ function iniciarJogo(){
 	document.getElementById('cronometro').innerHTML = tempo_segundos;
 
 	//quantidade de baloes
-	var qtde_baloes = 20;
+	var qtde_baloes = 80;
 	cria_baloes(qtde_baloes);
 
 	//imprimir qtde baloes inteiros
@@ -65,6 +65,9 @@ function cria_baloes(qtde_baloes){
 
 function estourar(e){
 	var id_balao = e.id; //pegar de um balao para alterar depois
+	document.getElementById(id_balao).setAttribute("onclick", "")//vou tirar do balao a 
+	//opcao onclick e definila com vazio assim cada balao so pode ser clicado uma vez só
+	
 	document.getElementById(id_balao).src = 'imagens/balao_azul_pequeno_estourado.png' //alterar o balao clicado
     pontuacao(-1)
 }
