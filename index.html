@@ -6,11 +6,10 @@
 		<title>Estourando balões</title>
 
 		<script language='Javascript'>
-			function iniciaJogo(){
-				var nivel_jogo = document.getElementById('nivel_jogo').value;
+			function startGame(){
+				var level_game = document.getElementById('level_game').value;
 
-				window.location.href = 'jogo.html?' + nivel_jogo;
-				//7:43
+				window.location.href = 'game.html?' + level_game;
 			}
 		</script>
 	</head>
@@ -19,14 +18,14 @@
 		<div>
 			<p>
 				<b>Nível:</b>
-				<select id="nivel_jogo">
+				<select id="level_game">
 					<option value="1">Fácil</option>
 					<option value="2">Normal</option>
 					<option value="3">Difícil</option>
 				</select>
 			</p>
 			<br/>
-			<img src="imagens/iniciar.png" onclick="iniciaJogo()">
+			<img src="imagens/iniciar.png" onclick="startGame()">
 		</div>
 	</body>
 	

@@ -4,11 +4,11 @@
 		<meta charset="UTF-8">
 
 		<title>Estourando balões</title>
-		<script src="jogo.js"></script>
+		<script src="gameScript.js"></script>
 
 	</head>
 
-	<body onload="iniciarJogo()">
+	<body onload="startGame()">
 		<div style="float:left; width:auto; height: 500px; background: #fff; border:solid 1px #a2a2a2; margin-right: 5px;">
 			<table >
 				<tr>
@@ -16,7 +16,7 @@
 						<img src="imagens/balao_azul_grande.png" />
 					</td>
 					<td>
-						<span id="baloes_inteiros" style="font-size: 40px;"></span>
+						<span id="wholeSkulls" style="font-size: 40px;"></span>
 					</td>
 				</tr>
 			</table>
@@ -28,7 +28,7 @@
 						<img src="imagens/balao_azul_grande_estourado.png" />
 					</td>
 					<td>
-						<span id="baloes_estourados" style="font-size: 40px;"></span>
+						<span id="burstSkulls" style="font-size: 40px;"></span>
 					</td>
 				</tr>
 			</table>
@@ -37,14 +37,16 @@
 			<table  style="width:140px; height:132px;">
 				<tr>
 					<td style="background: url('imagens/cronometro.png'); text-align: center;">
-						<span id="cronometro" style="color: red; font-size:30px;"></span>
+						<span id="stopwatch" style="color: red; font-size:30px;"></span>
 					</td>
 
 				</tr>
 			</table>
 		</div>
 
-		<div id="cenario" style="float:left; width: 600px; height: 500px; background:url('imagens/cenario.png'); background-position: bottom;"></div>
+		<div id="scenario" style="float:left; width: 600px; height: 500px; background:url('imagens/cenario.png'); background-position: bottom;"></div>
+		
+	
 	</body>
 	
 </html>
