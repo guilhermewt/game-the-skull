@@ -4,6 +4,7 @@ function iniciarJogo(){
 	// pegar o que veio na url ex. ?1
 	var url = window.location.search;
 	
+	
 	var nivel_jogo = url.replace("?","")
 	alert(nivel_jogo)
 
