@@ -3,9 +3,10 @@ var timerId = null;
 function startGame() {
 
 	var url = window.location.search
-	var levelGame = url.replace("?", "")
+	var levelGame = document.getElementById('level_game').value;
+	levelGame = parseInt(levelGame)
 	var secondTime = determineGameLevel(levelGame)
-	var quantitySkulls = 5;
+	var quantitySkulls = 36;
 
 	document.getElementById('stopwatch').innerHTML = secondTime;
 	document.getElementById('wholeSkulls').innerHTML = quantitySkulls;
@@ -42,8 +43,9 @@ function countTime(second) {
 function createSkulls(qtde_skulls) {
 	for (var i = 1; i <= qtde_skulls; i++) {
 		var skulls = document.createElement("img");
-		skulls.src = 'imagens/balao_azul_pequeno.png';
+		skulls.src = 'imagens/caveira_azul.png';
 		skulls.style.margin = '10px';
+		skulls.style.width='60px';
 		skulls.id = 'b' + i;
 		skulls.onclick = function () {
 			if (timerId != null)
@@ -57,7 +59,7 @@ function createSkulls(qtde_skulls) {
 function burstSkulls(skulls) {
 	var id_skulls = skulls.id;
 	document.getElementById(id_skulls).setAttribute("onclick", "")
-	document.getElementById(id_skulls).src = 'imagens/balao_azul_pequeno_estourado.png'
+	document.getElementById(id_skulls).src = 'imagens/caveira_rosa.png'
 
 	changeScore(-1)
 }
