@@ -1,4 +1,5 @@
 var timerId = null;
+var quantitySkulls = null
 
 function startGame() {
 
@@ -6,7 +7,7 @@ function startGame() {
 	var levelGame = document.getElementById('level_game').value;
 	levelGame = parseInt(levelGame)
 	var secondTime = determineGameLevel(levelGame)
-	var quantitySkulls = 36;
+	quantitySkulls = 30;
 
 	document.getElementById('stopwatch').innerHTML = secondTime;
 	document.getElementById('wholeSkulls').innerHTML = quantitySkulls;
@@ -90,5 +91,14 @@ function gameSituation(wholeSkulls) {
 function stopGame(msg) {
 	clearTimeout(timerId);
 	timerId = null
-	alert(msg)
+	
+	document.getElementById('button').click();
 }
+
+function restart() {
+	clearTimeout(timerId);
+	timerId = null
+	window.location.href = 'game.html'
+}
+
+//https://www.devmedia.com.br/forum/como-fazer-um-botao-acionar-outro-em-javascript/572271
