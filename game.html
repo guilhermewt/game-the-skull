@@ -1,124 +1,205 @@
-<!DOCTYPE HTML>
 
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Estourando balões</title>
+    <link rel="icon"  href="imagens/favicon.png">
+
+	<title>Estourando balões</title>
 		<script src="gameScript.js"></script>
 		<link rel="stylesheet" href="styleGame.css">
 
-		<!-- bootstrap 4 -->
-		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="estilo.css" rel="stylesheet">
 
-	</head>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+		
 
 	<body >
-		<!-- <div style="float:left; width:auto; height: 500px; background: #fff; border:solid 1px #a2a2a2; margin-right: 5px;">
-			<table >
-				<tr>
-					<td>
-						<img src="imagens/balao_azul_grande.png" />
-					</td>
-					<td>
-						<span id="wholeSkulls" style="font-size: 40px;"></span>
-					</td>
-				</tr>
-			</table>
-
-			<br/>
-			<table >
-				<tr>
-					<td>
-						<img src="imagens/balao_azul_grande_estourado.png" />
-					</td>
-					<td>
-						<span id="burstSkulls" style="font-size: 40px;"></span>
-					</td>
-				</tr>
-			</table>
-
-			<br/>
-			<table  style="width:140px; height:132px;">
-				<tr>
-					<td style="background: url('imagens/cronometro.png'); text-align: center;">
-						<span id="stopwatch" style="color: red; font-size:30px;"></span>
-					</td>
-
-				</tr>
-			</table>
-		</div>
-
-		<div id="scenario" style="float:left; width: 600px; height: 500px; background:url('imagens/cenario.png'); background-position: bottom;"></div>
-		 -->
-
-
-
-		 <p data-toggle="modal" data-target="#janela"> </p>
-
-<!-- janela -->
-<form class="modal fade" id="janela">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-		
-			<!-- cabecalho -->
-			<div class="modal-header"> 
-				<h4 class="modal-title">selecione um nível</h4>
-				<button type="button" class="close" data-dismiss="modal">
-				<span>&times;</span>
-				</button>
-			
-			</div>
-
-			<!-- corpo -->
-			<div class="modal-body"> 
-				<div class="form-group">
-					<p>
-						<b>Nível:</b>
-						<select id="level_game">
-							<option value="1">Fácil</option>
-							<option value="2">Normal</option>
-							<option value="3">Difícil</option>
-						</select>
-					</p>
-					<br/>
-					<img src="imagens/iniciar.png" onclick="startGame()" data-dismiss="modal">
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-</form>
+	
 
 		 <div class="container">
 			
-				<div class="scenario col-12 col-sm-12 col-md-9 col-lg-7 col-xl-6" id="scenario">
+				<div class="scenario col-12 col-sm-7 col-md-7 col-lg-4 col-xl-4" id="scenario">
 
 				</div>
 
 				<div class="score">
 					<div>
 						<img src="imagens/caveira_azul.png" class="image_config"/>
-						<span id="wholeSkulls" style="font-size: 40px;"></span> 
+						<span id="wholeSkulls" ></span> 
 					</div>
 					
 					<div>
 						<img src="imagens/caveira_rosa.png" class="image_config"/> 
-						<span id="burstSkulls" style="font-size: 40px;"></span>
-					</div>		
+						<span id="burstSkulls"></span>
+					</div>	
+					
+					<div data-toggle="modal" data-target="#restart" id="button" onclick="stopTimer()">
+						<img src="imagens/reiniciar.png" class="image_config restart"/> 
+					</div>
 
 					<div class="stopwatch">
-						<span id="stopwatch" style="color: red; font-size:30px;"></span>
+						<span id="stopwatch"></span>
 					</div>	
 
-					<div data-toggle="modal" data-target="#janela" id="button" onclick="restart()" class="restart">
-						<img src="imagens/reiniciar.png" class=""/> 
-						reiniciar
-					</div>
 				</div>
 
-				<!--acionar botao-->
+				<!--modais-->
+				
+
+				<!-- nivel -->
+				<form class="modal fade" id="janela" >
+					<div class="modal-dialog modal-sm" >
+						<div class="modal-content" style="background-color:black; color:white">
+						
+							<!-- cabecalho -->
+							<div class="modal-header"> 
+								<h4 class="modal-title">selecione um nível</h4>
+								<button type="button" class="close" data-dismiss="modal" style="color:white">
+								<span>&times;</span>
+								</button>
+							
+							</div>
+				
+							<!-- corpo -->
+							<div class="modal-body"> 
+								<div class="form-group">
+									<p>
+										<b>Nível:</b>
+										<select class="custom-select mr-sm-2 bg-dark" style="color:white" id="level_game">
+											<option selected value="1" class="bg-dark">Easy</option>
+											<option value="2">Normal</option>
+											<option value="3">Hard</option>
+										  </select>
+									</p>
+									<br/>
+									<img src="imagens/play.png" style="width:100px" onclick="selectNivel()" data-dismiss="modal">
+								</div>
+							</div>
+						</div>
+				
+					</div>
+				
+				</form>
+
+				<!-- restart -->
+				<form class="modal fade" id="restart" >
+					<div class="modal-dialog modal-sm" >
+						<div class="modal-content" style="background-color:black; color:white">
+						
+							<!-- cabecalho -->
+							<div class="modal-header"> 
+								<h4 class="modal-title">selecione um nível</h4>
+								<button type="button" class="close" data-dismiss="modal" style="color:white">
+								<span>&times;</span>
+								</button>
+							
+							</div>
+				
+							<!-- corpo -->
+							<div class="modal-body"> 
+								<div class="form-group">
+									<p>
+										<b>Nível:</b>
+										<select class="custom-select mr-sm-2 bg-dark" style="color:white" id="level_gameRestart">
+											<option selected value="1" class="bg-dark">Easy</option>
+											<option value="2">Normal</option>
+											<option value="3">Hard</option>
+										  </select>
+									</p>
+									<br/>
+									<img src="imagens/play.png" style="width:100px" onclick="restartGame()" data-dismiss="modal">
+								</div>
+							</div>
+						</div>
+				
+					</div>
+				
+				</form>
+				
+				<!--successul message-->
+				<p data-toggle="modal" data-target="#succesfulMessage" id="showSuccesfulMessage"></p>
+				<form class="modal fade" id="succesfulMessage">
+					<div class="modal-dialog modal-sm" >
+						<div class="modal-content" style="background-color:black; color:rgb(70, 157, 30)">
+						
+							<!-- cabecalho -->
+							<div class="modal-header"> 
+								<h4 class="modal-title">parabéns voce venceu</h4>
+								<button type="button" class="close" data-dismiss="modal" style="color:white">
+								<span>&times;</span>
+								</button>
+							
+							</div>
+				
+							<!-- corpo -->
+							<div class="modal-body"> 
+								<div class="form-group">
+									<h5 class="modal-title">Tentar novamente</h5>
+									<p>
+										<b>Nível:</b>
+										<select class="custom-select mr-sm-2 bg-dark" style="color:white" id="level_gameSuccess">
+											<option selected value="1" class="bg-dark">Easy</option>
+											<option value="2">Normal</option>
+											<option value="3">Hard</option>
+										  </select>
+									</p>
+									<br/>
+									<img src="imagens/play.png" style="width:100px" onclick="restartGameSuccess()" data-dismiss="modal">
+								</div>
+							</div>
+						</div>
+				
+					</div>
+				
+				</form>
+
+				<!--bad message-->
+				<p data-toggle="modal" data-target="#badMessage" id="showBadMessage"></p>
+				<form class="modal fade" id="badMessage">
+					<div class="modal-dialog modal-sm" >
+						<div class="modal-content" style="background-color:black; color:rgb(221, 31, 31)">
+						
+							<!-- cabecalho -->
+							<div class="modal-header"> 
+								<h4 class="modal-title">sinto muito voce não conseguii</h4>
+								<button type="button" class="close" data-dismiss="modal" style="color:white">
+								<span>&times;</span>
+								</button>
+							
+							</div>
+				
+							<!-- corpo -->
+							<div class="modal-body"> 
+								<div class="form-group">
+									<h5 class="modal-title">Tentar novamente</h5>
+									<p>
+										<b>Nível:</b>
+										<select class="custom-select mr-sm-2 bg-dark" style="color:white" id="level_gameBad">
+											<option selected value="1" class="bg-dark">Easy</option>
+											<option value="2">Normal</option>
+											<option value="3">Hard</option>
+										  </select>
+									</p>
+									<br/>
+									<img src="imagens/play.png" style="width:100px" onclick="restartGameBad()" data-dismiss="modal">
+								</div>
+							</div>
+						</div>
+				
+					</div>
+				
+				</form>
 				
 
 		 </div>
@@ -133,6 +214,8 @@
 		$(document).ready(function() {
 			$('#janela').modal('show');
 		})
+
+		
 		</script>
 	</body>
 	
