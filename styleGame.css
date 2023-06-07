@@ -1,5 +1,6 @@
 body {
     background: linear-gradient(90deg, rgba(8,8,8,1) 24%, rgba(14,32,47,1) 47%, rgba(6,6,6,1) 72%) !important;
+    color:white;
 }
 
 .scenario{

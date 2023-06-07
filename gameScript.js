@@ -39,13 +39,13 @@ function restartGameSuccess() {
 
 function determineGameLevel(levelGame) {
 	if (levelGame == 1)
-		return 120;
+		return 100;
 
 	if (levelGame == 2)
-		return 60;
+		return 50;
 
 	if (levelGame == 3)
-		return 5;
+		return 25;
 }
 
 function countTime(second) {
